@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preview Plan One | Step 2</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="glow glow-left"></div>
+      <div class="glow glow-right"></div>
+
+      <header class="topbar">
+        <p class="brand">Timoteo Wellness</p>
+        <p class="brand-sub">Preview concept: vitality-led call funnel</p>
+      </header>
+
+      <main class="panel quiz-panel">
+        <section class="hero-copy">
+          <p class="eyebrow">Step 2 of 3</p>
+          <h1>Before you access the guide, answer 3 quick questions.</h1>
+          <p class="lead">
+            This helps us better understand what may be getting in the way of your energy,
+            clarity, and overall vitality so we can point you in the right direction.
+          </p>
+        </section>
+
+        <aside class="card quiz-card">
+          <form id="quiz-form" class="stack-md">
+            <div class="quiz-step quiz-step-active" data-step="1">
+              <legend>1. Where do you feel the greatest disconnect right now?</legend>
+              <label><input type="radio" name="q1" value="My energy does not feel stable" required /> My energy does not feel stable</label>
+              <label><input type="radio" name="q1" value="My body feels like it is working harder than it should" /> My body feels like it is working harder than it should</label>
+              <label><input type="radio" name="q1" value="I do not feel as clear or focused as I want to" /> I do not feel as clear or focused as I want to</label>
+              <label><input type="radio" name="q1" value="I feel like something in my routine may be working against me" /> I feel like something in my routine may be working against me</label>
+            </div>
+
+            <div class="quiz-step" data-step="2" hidden>
+              <legend>2. Which area do you most want to improve?</legend>
+              <label><input type="radio" name="q2" value="Energy and stamina" required /> Energy and stamina</label>
+              <label><input type="radio" name="q2" value="Clarity and mental sharpness" /> Clarity and mental sharpness</label>
+              <label><input type="radio" name="q2" value="Daily balance and resilience" /> Daily balance and resilience</label>
+              <label><input type="radio" name="q2" value="Understanding what may be disrupting my progress" /> Understanding what may be disrupting my progress</label>
+            </div>
+
+            <div class="quiz-step" data-step="3" hidden>
+              <legend>3. Which statement sounds most like you?</legend>
+              <label><input type="radio" name="q3" value="I want to feel better naturally" required /> I want to feel better naturally</label>
+              <label><input type="radio" name="q3" value="I want to understand what may be throwing things off" /> I want to understand what may be throwing things off</label>
+              <label><input type="radio" name="q3" value="I want a clearer starting point" /> I want a clearer starting point</label>
+              <label><input type="radio" name="q3" value="I want expert guidance on my next step" /> I want expert guidance on my next step</label>
+            </div>
+
+            <div class="quiz-status">
+              <span class="quiz-dot quiz-dot-active"></span>
+              <span class="quiz-dot"></span>
+              <span class="quiz-dot"></span>
+            </div>
+          </form>
+        </aside>
+      </main>
+
+      <nav class="progress" aria-label="Progress">
+        <a class="progress-pill" href="./index.html">01 Guide</a>
+        <span class="progress-pill progress-pill-active">02 Quiz</span>
+        <span class="progress-pill">03 Next Step</span>
+      </nav>
+    </div>
+
+    <script src="./quiz.js"></script>
+  </body>
+</html>

@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timoteo Wellness | Guided Funnel Review</title>
+    <style>
+      :root {
+        --bg: #f7f1e8;
+        --surface: rgba(255, 250, 244, 0.82);
+        --surface-strong: #fffaf4;
+        --surface-soft: rgba(255, 247, 238, 0.72);
+        --text: #4d4037;
+        --text-strong: #251a14;
+        --muted: #736255;
+        --line: rgba(101, 78, 61, 0.16);
+        --gold: #b77a3d;
+        --gold-deep: #9b6734;
+        --sage: #7a8b6c;
+        --sage-deep: #617056;
+        --shadow: 0 30px 80px rgba(84, 58, 34, 0.14);
+        --radius-xl: 32px;
+        --radius-lg: 24px;
+        --radius-md: 16px;
+        --sans: "Avenir Next", "Segoe UI", sans-serif;
+        --display: Georgia, "Times New Roman", serif;
+
+        font-family: var(--sans);
+        line-height: 1.5;
+        font-weight: 400;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(192, 145, 95, 0.18), transparent 24rem),
+          radial-gradient(circle at bottom right, rgba(122, 139, 108, 0.16), transparent 26rem),
+          linear-gradient(180deg, #fbf6ef 0%, #f5ede3 100%);
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        min-height: 100vh;
+      }
+
+      button,
+      input,
+      a {
+        font: inherit;
+      }
+
+      button {
+        border: 0;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .site-shell {
+        position: relative;
+        max-width: 1320px;
+        margin: 0 auto;
+        padding: 32px;
+      }
+
+      .ambient {
+        position: fixed;
+        width: 28rem;
+        height: 28rem;
+        border-radius: 999px;
+        filter: blur(40px);
+        opacity: 0.45;
+        pointer-events: none;
+      }
+
+      .ambient-left {
+        top: -8rem;
+        left: -10rem;
+        background: rgba(191, 141, 88, 0.24);
+      }
+
+      .ambient-right {
+        right: -8rem;
+        bottom: -10rem;
+        background: rgba(122, 139, 108, 0.22);
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding: 0 4px 24px;
+      }
+
+      .brand-mark,
+      .brand-note,
+      .eyebrow,
+      .card-kicker,
+      .microcopy,
+      .step-pill,
+      .question-count {
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .brand-mark {
+        margin: 0;
+        color: var(--text-strong);
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+
+      .brand-note {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+
+      .progress-track {
+        position: fixed;
+        inset: 0 0 auto;
+        height: 4px;
+        background: rgba(101, 78, 61, 0.1);
+        z-index: 30;
+        display: none;
+      }
+
+      .progress-fill {
+        height: 100%;
+        width: 0;
+        background: linear-gradient(90deg, var(--gold), var(--sage));
+        transition: width 240ms ease;
+      }
+
+      .funnel {
+        position: relative;
+        overflow: hidden;
+        min-height: 760px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-xl);
+        background: linear-gradient(145deg, rgba(255, 252, 247, 0.9), rgba(251, 245, 237, 0.78));
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(16px);
+      }
+
+      .screen {
+        display: none;
+        min-height: 760px;
+        padding: 64px;
+        animation: rise 420ms ease;
+      }
+
+      .screen.active {
+        display: grid;
+      }
+
+      .screen-split {
+        grid-template-columns: minmax(0, 1fr) minmax(420px, 1fr);
+        gap: 34px;
+        align-items: center;
+      }
+
+      .screen-centered {
+        align-items: center;
+        justify-items: center;
+      }
+
+      .screen-copy {
+        max-width: 620px;
+      }
+
+      .eyebrow,
+      .card-kicker,
+      .question-count {
+        margin: 0 0 18px;
+        color: var(--gold-deep);
+        font-size: 0.78rem;
+        font-weight: 700;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        color: var(--text-strong);
+        font-family: var(--display);
+        letter-spacing: -0.04em;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 4.4vw, 4.35rem);
+        line-height: 1.02;
+        max-width: 13ch;
+      }
+
+      h2 {
+        font-size: clamp(2.4rem, 4vw, 3.6rem);
+        line-height: 1.04;
+      }
+
+      h3 {
+        font-size: clamp(1.8rem, 3vw, 2.4rem);
+        line-height: 1.08;
+      }
+
+      .lead {
+        margin: 24px 0 0;
+        color: var(--muted);
+        font-size: 1.15rem;
+        max-width: 58ch;
+      }
+
+      .benefits {
+        display: grid;
+        gap: 14px;
+        margin-top: 32px;
+      }
+
+      .benefits p,
+      .quote-block p {
+        margin: 0;
+      }
+
+      .benefits p {
+        width: fit-content;
+        max-width: 100%;
+        padding: 14px 18px;
+        border: 1px solid rgba(122, 139, 108, 0.18);
+        border-radius: 999px;
+        background: rgba(255, 250, 244, 0.7);
+        color: var(--text-strong);
+      }
+
+      .card {
+        position: relative;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        background: linear-gradient(180deg, var(--surface) 0%, var(--surface-strong) 100%);
+        box-shadow: 0 14px 36px rgba(92, 64, 34, 0.08);
+      }
+
+      .capture-card,
+      .question-card,
+      .video-card,
+      .call-card,
+      .guide-card,
+      .result-card {
+        padding: 34px;
+      }
+
+      .card-text,
+      .body-text {
+        margin: 16px 0 0;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+
+      .capture-form {
+        display: grid;
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .email-input {
+        width: 100%;
+        padding: 16px 18px;
+        border: 1px solid rgba(101, 78, 61, 0.18);
+        border-radius: 999px;
+        background: rgba(255, 253, 250, 0.92);
+        color: var(--text-strong);
+      }
+
+      .email-input:focus {
+        outline: none;
+        border-color: rgba(183, 122, 61, 0.6);
+        box-shadow: 0 0 0 4px rgba(183, 122, 61, 0.14);
+      }
+
+      .button {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 56px;
+        padding: 0 22px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 700;
+        cursor: pointer;
+        transition:
+          transform 180ms ease,
+          box-shadow 180ms ease,
+          background-color 180ms ease,
+          border-color 180ms ease;
+      }
+
+      .button:hover,
+      .button:focus-visible {
+        transform: translateY(-2px);
+      }
+
+      .button-primary {
+        background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%);
+        color: #fff9f3;
+        box-shadow: 0 14px 24px rgba(155, 103, 52, 0.22);
+      }
+
+      .button-secondary {
+        background: rgba(122, 139, 108, 0.12);
+        border: 1px solid rgba(122, 139, 108, 0.28);
+        color: var(--sage-deep);
+      }
+
+      .microcopy {
+        margin: 14px 0 0;
+        color: #8f7f71;
+        font-size: 0.72rem;
+        line-height: 1.5;
+      }
+
+      .question-stack {
+        display: grid;
+        gap: 14px;
+        width: 100%;
+        max-width: 760px;
+      }
+
+      .quiz-option {
+        width: 100%;
+        padding: 20px 24px;
+        border: 1px solid rgba(101, 78, 61, 0.14);
+        border-radius: var(--radius-md);
+        background: rgba(255, 252, 248, 0.86);
+        color: var(--text-strong);
+        text-align: left;
+        cursor: pointer;
+        transition:
+          transform 180ms ease,
+          border-color 180ms ease,
+          background-color 180ms ease,
+          box-shadow 180ms ease;
+      }
+
+      .quiz-option:hover {
+        transform: translateX(4px);
+        border-color: rgba(183, 122, 61, 0.36);
+        background: rgba(255, 252, 247, 1);
+        box-shadow: 0 12px 22px rgba(92, 64, 34, 0.08);
+      }
+
+      .quote-block {
+        margin-top: 24px;
+        padding: 24px 26px;
+        border-left: 3px solid rgba(183, 122, 61, 0.42);
+        border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        background: var(--surface-soft);
+      }
+
+      .guide-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 132px;
+        gap: 24px;
+        align-items: center;
+      }
+
+      .guide-cover {
+        height: 178px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.94);
+        border-top: 5px solid var(--gold-deep);
+        box-shadow: 0 18px 30px rgba(92, 64, 34, 0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px;
+        text-align: center;
+        color: var(--muted);
+        font-family: var(--display);
+      }
+
+      .video-placeholder {
+        display: grid;
+        place-items: center;
+        min-height: 360px;
+        padding: 24px;
+        border-radius: 20px;
+        background:
+          linear-gradient(145deg, rgba(122, 139, 108, 0.18), rgba(183, 122, 61, 0.12)),
+          linear-gradient(180deg, rgba(255, 250, 244, 0.78), rgba(255, 255, 255, 0.95));
+        border: 1px solid rgba(101, 78, 61, 0.14);
+        text-align: center;
+      }
+
+      .play-chip {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 88px;
+        min-height: 88px;
+        border-radius: 999px;
+        background: rgba(255, 250, 244, 0.95);
+        color: var(--gold-deep);
+        font-weight: 700;
+        box-shadow: 0 12px 24px rgba(92, 64, 34, 0.12);
+      }
+
+      .step-nav {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 22px;
+      }
+
+      .dot-row {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: rgba(101, 78, 61, 0.18);
+      }
+
+      .dot-active {
+        background: var(--gold-deep);
+        transform: scale(1.15);
+      }
+
+      .step-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(101, 78, 61, 0.14);
+        background: rgba(255, 249, 242, 0.72);
+        color: var(--muted);
+        font-size: 0.72rem;
+        font-weight: 700;
+      }
+
+      .step-pill-active {
+        background: rgba(183, 122, 61, 0.12);
+        border-color: rgba(183, 122, 61, 0.28);
+        color: var(--gold-deep);
+      }
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 980px) {
+        .site-shell {
+          padding: 20px;
+        }
+
+        .topbar {
+          flex-direction: column;
+          align-items: flex-start;
+          padding-bottom: 18px;
+        }
+
+        .screen,
+        .screen-split {
+          grid-template-columns: 1fr;
+          gap: 28px;
+          padding: 36px 24px;
+          min-height: auto;
+        }
+
+        .guide-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        :root {
+          font-size: 15px;
+        }
+
+        .site-shell {
+          padding: 14px;
+        }
+
+        .funnel {
+          min-height: auto;
+          border-radius: 24px;
+        }
+
+        .screen {
+          padding: 28px 18px 22px;
+        }
+
+        .capture-card,
+        .question-card,
+        .video-card,
+        .call-card,
+        .guide-card,
+        .result-card {
+          padding: 22px;
+        }
+
+        .benefits p {
+          width: 100%;
+          border-radius: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="progress-track" id="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="site-shell">
+      <div class="ambient ambient-left"></div>
+      <div class="ambient ambient-right"></div>
+
+      <header class="topbar">
+        <p class="brand-mark">Timoteo Wellness</p>
+      </header>
+
+      <main class="funnel">
+        <section class="screen screen-split active" id="step-1">
+          <div class="screen-copy">
+            <div class="dot-row" aria-hidden="true">
+              <span class="dot dot-active"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <h1>If your energy is unstable and your body doesn’t feel right, it’s not random. Something is causing it, and we’ll show you exactly what it is.</h1>
+          </div>
+
+          <aside class="card capture-card">
+            <p class="card-kicker">The Hidden Interference Guide</p>
+            <h3>The Hidden Interference Guide</h3>
+            <p class="card-text">
+              A simple breakdown of what disrupts your body’s natural state and where to start removing it.
+            </p>
+            <form class="capture-form" id="optin-form">
+              <input class="email-input" type="email" placeholder="Enter your best email address" required />
+              <button class="button button-primary" type="submit">Start the Assessment →</button>
+            </form>
+          </aside>
+        </section>
+
+        <section class="screen screen-centered" id="step-2">
+          <div class="screen-copy" style="width:100%;max-width:760px;text-align:center;">
+            <p class="question-count">Question 1 of 3</p>
+            <h2>Where do you feel the greatest disconnect right now?</h2>
+            <div class="question-stack" style="margin:34px auto 0;">
+              <button class="quiz-option" onclick="handleOptionSelect(3)">My energy does not feel stable</button>
+              <button class="quiz-option" onclick="handleOptionSelect(3)">My body feels like it is working harder than it should</button>
+              <button class="quiz-option" onclick="handleOptionSelect(3)">I do not feel as clear or focused as I want to</button>
+              <button class="quiz-option" onclick="handleOptionSelect(3)">I feel like something in my routine may be working against me</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen screen-centered" id="step-3">
+          <div class="screen-copy" style="width:100%;max-width:760px;text-align:center;">
+            <p class="question-count">Question 2 of 3</p>
+            <h2>Which area do you most want to improve?</h2>
+            <div class="question-stack" style="margin:34px auto 0;">
+              <button class="quiz-option" onclick="handleOptionSelect(4)">Energy and stamina</button>
+              <button class="quiz-option" onclick="handleOptionSelect(4)">Clarity and mental sharpness</button>
+              <button class="quiz-option" onclick="handleOptionSelect(4)">Daily balance and resilience</button>
+              <button class="quiz-option" onclick="handleOptionSelect(4)">Understanding what may be disrupting my progress</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen screen-centered" id="step-4">
+          <div class="screen-copy" style="width:100%;max-width:760px;text-align:center;">
+            <p class="question-count">Question 3 of 3</p>
+            <h2>Which statement sounds most like you?</h2>
+            <div class="question-stack" style="margin:34px auto 0;">
+              <button class="quiz-option" onclick="handleOptionSelect(5)">I want to feel better naturally</button>
+              <button class="quiz-option" onclick="handleOptionSelect(5)">I want to understand what may be throwing things off</button>
+              <button class="quiz-option" onclick="handleOptionSelect(5)">I want a clearer starting point</button>
+              <button class="quiz-option" onclick="handleOptionSelect(5)">I want expert guidance on my next step</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen screen-centered" id="step-5">
+          <div class="screen-copy" style="width:100%;max-width:820px;">
+            <p class="eyebrow">Step 5 of 7</p>
+            <h2>You’re not far off. You’re just dealing with hidden interference.</h2>
+            <p class="lead">
+              Based on your answers, your body isn’t underperforming. It’s responding to things that are pulling it out of balance.
+            </p>
+
+            <div class="card result-card" style="margin-top:28px;">
+              <p class="body-text" style="margin-top:0;">
+                Most people never identify these.
+              </p>
+              <p class="body-text">
+                That’s why nothing fully works.
+              </p>
+            </div>
+
+            <div class="card guide-card" style="margin-top:22px;">
+              <div class="guide-grid">
+                <div>
+                  <p class="card-kicker">Download your guide</p>
+                  <h3>Download your guide</h3>
+                  <p class="card-text">
+                    This shows you:
+                  </p>
+                  <div class="benefits" style="margin-top:18px;">
+                    <p>What optimal function actually looks like</p>
+                    <p>What typically interferes</p>
+                    <p>Where to start removing pressure from your system</p>
+                  </div>
+                  <a class="button button-primary" href="#guide-placeholder" style="margin-top:22px;">Download The Guide</a>
+                </div>
+                <div class="guide-cover">The Hidden Interference Guide</div>
+              </div>
+            </div>
+
+            <div style="text-align:center;margin-top:28px;">
+              <button class="button button-secondary" onclick="showStep(6)">Continue to the video</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen screen-centered" id="step-6">
+          <div class="screen-copy" style="width:100%;max-width:920px;text-align:center;">
+            <p class="eyebrow">Step 6 of 7</p>
+            <h2>Watch this before you try to fix anything else</h2>
+            <p class="lead" style="margin-left:auto;margin-right:auto;">
+              Most people try to fix their body.
+            </p>
+            <div class="card video-card" style="margin-top:28px;">
+              <div class="video-placeholder">
+                <div>
+                  <div class="play-chip">2 min</div>
+                  <div class="benefits" style="margin-top:18px;text-align:left;">
+                    <p>Why adding more doesn’t work</p>
+                    <p>What “interference” actually means</p>
+                    <p>How to start shifting back into a natural state</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="text-align:center;margin-top:28px;">
+              <button class="button button-secondary" onclick="showStep(7)">Continue to the final step</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen screen-centered" id="step-7">
+          <div class="screen-copy" style="width:100%;max-width:760px;text-align:center;">
+            <p class="eyebrow">Step 7 of 7</p>
+            <h2>Let’s identify what’s actually interfering for you</h2>
+            <p class="lead" style="margin-left:auto;margin-right:auto;">
+              If you want clarity on what’s specifically throwing your system off and what to remove first, we’ll map it out with you.
+            </p>
+            <div class="card call-card" style="margin-top:28px;">
+              <a class="button button-primary" style="margin-top:22px;width:100%;" href="https://tidycal.com/timoteo/free-call-eliminate-the-hidden-toxins-wrecking-your-health" target="_blank" rel="noreferrer">Book My Free Call</a>
+            </div>
+            <p class="microcopy" style="margin-top:20px;">If you're not ready for a call, you can start with the guide and watch for the follow-up email.</p>
+          </div>
+        </section>
+      </main>
+
+      <nav class="step-nav" aria-label="Progress">
+        <span class="step-pill step-pill-active" id="pill-label">01 Guide</span>
+      </nav>
+    </div>
+
+    <script>
+      const totalSteps = 7
+      const stepLabels = [
+        '01 Guide',
+        '02 Question',
+        '03 Question',
+        '04 Question',
+        '05 Results',
+        '06 Video',
+        '07 Call',
+      ]
+
+      function updateProgress(step) {
+        const track = document.getElementById('progress-track')
+        const fill = document.getElementById('progress-fill')
+        const pill = document.getElementById('pill-label')
+
+        if (step > 1) {
+          track.style.display = 'block'
+          fill.style.width = `${((step - 1) / (totalSteps - 1)) * 100}%`
+        } else {
+          track.style.display = 'none'
+          fill.style.width = '0%'
+        }
+
+        pill.textContent = stepLabels[step - 1]
+      }
+
+      function showStep(stepNumber) {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+
+        document.querySelectorAll('.screen').forEach((screen) => {
+          screen.classList.remove('active')
+        })
+
+        document.getElementById(`step-${stepNumber}`).classList.add('active')
+        updateProgress(stepNumber)
+      }
+
+      function handleOptionSelect(nextStep) {
+        showStep(nextStep)
+      }
+
+      document.getElementById('optin-form').addEventListener('submit', (event) => {
+        event.preventDefault()
+        showStep(2)
+      })
+    </script>
+  </body>
+  </html>
