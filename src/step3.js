@@ -9,26 +9,13 @@ app.innerHTML = `
 
     <header class="topbar">
       <p class="brand-mark">Timoteo Wellness</p>
-      <p class="brand-note">Thoughtful guidance for a cleaner home</p>
+      <p class="brand-note"></p>
     </header>
 
-    <main class="funnel" aria-labelledby="step-3-title">
-      <section class="step step-single">
-        <div class="step-copy">
-          <p class="eyebrow">Hidden Interference Quiz</p>
-          <h1 id="step-3-title">What May Be Interfering With Your Body’s Natural Balance?</h1>
-          <p class="lead">
-            We will walk through three quick prompts to spotlight where your energy,
-            clarity, or daily rhythm may feel out of sync.
-          </p>
-          <div class="quote-block">
-            <p>Hidden interference shows up as a subtle disconnect, not a dramatic alarm.</p>
-          </div>
-        </div>
-
-        <div class="card quiz-card">
+    <main class="funnel quiz-funnel" aria-labelledby="step-3-title">
+      <section class="step step-single quiz-step">
+        <div class="card quiz-card quiz-card-minimal">
           <div class="quiz-header">
-            <p class="card-kicker">Question flow</p>
             <div class="quiz-progress">
               <div class="quiz-progress-fill"></div>
             </div>
@@ -36,23 +23,15 @@ app.innerHTML = `
           </div>
 
           <div class="quiz-panel step-active" id="quiz-panel">
-            <h2 id="quiz-question">Question</h2>
+            <h1 id="step-3-title" class="quiz-question">Question</h1>
             <form class="quiz-form" id="quiz-form">
               <div class="quiz-options" id="quiz-options"></div>
               <button type="submit" class="button button-primary" id="quiz-next">Next</button>
             </form>
-            <p class="microcopy">Answers are private and used only to tailor your next step.</p>
           </div>
         </div>
       </section>
     </main>
-
-    <div class="progress-shell" aria-label="Progress">
-      <div class="progress-track">
-        <div class="progress-fill" style="width: 60%;"></div>
-      </div>
-      <p class="progress-label">Quiz in progress</p>
-    </div>
   </div>
 `
 
@@ -86,7 +65,7 @@ const questions = [
   }
 ]
 
-const quizQuestion = document.querySelector('#quiz-question')
+const quizQuestion = document.querySelector('#step-3-title')
 const quizOptions = document.querySelector('#quiz-options')
 const quizForm = document.querySelector('#quiz-form')
 const quizNext = document.querySelector('#quiz-next')

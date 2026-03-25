@@ -9,7 +9,7 @@ app.innerHTML = `
 
     <header class="topbar">
       <p class="brand-mark">Timoteo Wellness</p>
-      <p class="brand-note">Thoughtful guidance for a cleaner home</p>
+      <p class="brand-note"></p>
     </header>
 
     <main class="funnel" aria-labelledby="step-5-title">

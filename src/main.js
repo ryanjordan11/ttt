@@ -9,31 +9,29 @@ app.innerHTML = `
 
     <header class="topbar">
       <p class="brand-mark">Timoteo Wellness</p>
-      <p class="brand-note">Thoughtful guidance for a cleaner home</p>
+      <p class="brand-note"></p>
     </header>
 
-    <main class="funnel" aria-labelledby="step-1-title">
-      <section class="step step-single">
+    <main class="funnel hero-funnel" aria-labelledby="step-1-title">
+      <section class="step step-single hero-step">
         <div class="step-copy">
           <p class="eyebrow">Your guide is waiting</p>
-          <h1 id="step-1-title">Create a healthier home with calm, informed product swaps.</h1>
+          <h1 id="step-1-title">What you use every day may be adding more stress to your body than you realize.</h1>
           <p class="lead">
-            Learn the five hidden toxin categories that quietly show up in everyday routines,
-            and get a practical starting point for replacing them with better options.
+            This guide shows you where it’s coming from and what to change first, without overcomplicating your routine.
           </p>
           <div class="benefits" aria-label="Guide benefits">
-            <p>Simple explanations instead of fear-based advice</p>
-            <p>Clear examples of what to replace first</p>
-            <p>Designed for real families, budgets, and routines</p>
+            <p>Understand what’s actually showing up in your daily routine</p>
+            <p>See what to replace first (without changing everything at once)</p>
+            <p>Make simple changes that feel realistic and sustainable</p>
           </div>
         </div>
 
         <div class="card capture-card">
           <p class="card-kicker">Get the guide</p>
-          <h2>The Toxin-Free Home</h2>
+          <h2>Your Free Guide</h2>
           <p class="card-text">
-            A concise, well-structured starter guide covering common ingredients, where they
-            show up, and cleaner alternatives to consider first.
+            A simple breakdown of what may be affecting your body daily, where it shows up, and what to do first.
           </p>
           <form class="capture-form" action="/step2.html">
             <label class="sr-only" for="email">Email address</label>
@@ -46,10 +44,10 @@ app.innerHTML = `
               autocomplete="email"
               required
             />
-            <button type="submit" class="button button-primary">Send Me the Free Guide</button>
+            <button type="submit" class="button button-primary">Get The Free Guide</button>
           </form>
           <p class="microcopy">
-            Email delivery will be connected later. For now, this moves to the next step.
+            👉 Takes less than 2 minutes to go through.
           </p>
         </div>
       </section>
