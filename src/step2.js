@@ -15,35 +15,42 @@ app.innerHTML = `
     <main class="funnel" aria-labelledby="step-2-title">
       <section class="step step-single">
         <div class="step-copy">
-          <p class="eyebrow">Step 2 of 3</p>
-          <h1 id="step-2-title">Your guide is on its way, and there is one principle to keep in mind.</h1>
+          <p class="eyebrow">Guide delivery</p>
+          <h1 id="step-2-title">Your guide is ready to download.</h1>
           <p class="lead">
-            A healthier home is not built through perfection. It is built through steady,
-            better decisions that fit naturally into everyday life.
+            Use this quick reference to spot hidden toxin categories, understand what to
+            replace first, and choose simple upgrades that fit your routine.
           </p>
-          <div class="quote-block">
-            <p>Start with one product. Replace it well. Then keep going with confidence.</p>
+          <div class="guide-details">
+            <p>Concise ingredient breakdowns for everyday products</p>
+            <p>Room-by-room swap ideas that feel practical</p>
+            <p>Clear next steps without overwhelm</p>
           </div>
         </div>
 
-        <div class="card media-card">
-          <div class="video-placeholder" aria-hidden="true">
-            <div class="play-chip">2 min</div>
-            <p>Video message placeholder</p>
+        <div class="card guide-card">
+          <div class="guide-visual" aria-hidden="true">
+            <span class="guide-chip">PDF Guide</span>
+            <p>The Toxin-Free Home</p>
           </div>
           <p class="card-text">
-            This section is ready for Timoteo’s short welcome video. Until that is added,
-            the page still communicates the core message clearly and keeps the user moving.
+            Placeholder download experience. Replace this with the final PDF link and cover
+            artwork when ready.
           </p>
-          <a class="button button-primary" href="/step3.html">Continue to the final step</a>
+          <div class="guide-actions">
+            <a class="button button-primary" href="/guide.pdf">Download the guide</a>
+            <a class="button button-secondary" href="/step3.html">Start the quiz</a>
+          </div>
+          <p class="microcopy">Quiz opens after the download until automation is connected.</p>
         </div>
       </section>
     </main>
 
-    <nav class="step-nav" aria-label="Progress">
-      <a class="step-pill" href="/">01 Guide</a>
-      <span class="step-pill step-pill-active" aria-current="step">02 Message</span>
-      <span class="step-pill">03 Next step</span>
-    </nav>
+    <div class="progress-shell" aria-label="Progress">
+      <div class="progress-track">
+        <div class="progress-fill" style="width: 40%;"></div>
+      </div>
+      <p class="progress-label">Guide unlocked</p>
+    </div>
   </div>
 `

@@ -15,7 +15,7 @@ app.innerHTML = `
     <main class="funnel" aria-labelledby="step-1-title">
       <section class="step step-single">
         <div class="step-copy">
-          <p class="eyebrow">Step 1 of 3</p>
+          <p class="eyebrow">Your guide is waiting</p>
           <h1 id="step-1-title">Create a healthier home with calm, informed product swaps.</h1>
           <p class="lead">
             Learn the five hidden toxin categories that quietly show up in everyday routines,
@@ -55,10 +55,11 @@ app.innerHTML = `
       </section>
     </main>
 
-    <nav class="step-nav" aria-label="Progress">
-      <span class="step-pill step-pill-active" aria-current="step">01 Guide</span>
-      <span class="step-pill">02 Message</span>
-      <span class="step-pill">03 Next step</span>
-    </nav>
+    <div class="progress-shell" aria-label="Progress">
+      <div class="progress-track">
+        <div class="progress-fill" style="width: 20%;"></div>
+      </div>
+      <p class="progress-label">Getting started</p>
+    </div>
   </div>
 `
