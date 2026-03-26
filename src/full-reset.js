@@ -105,7 +105,7 @@ app.innerHTML = `
       padding: 0 18px;
       display: grid;
       gap: 16px;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       align-items: stretch;
     }
 
@@ -120,6 +120,23 @@ app.innerHTML = `
       text-transform: uppercase;
       letter-spacing: 0.12em;
       font-size: 0.7rem;
+    }
+
+    .reset-video {
+      background: rgba(0, 0, 0, 0.25);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 14px;
+      padding: 8px;
+      display: grid;
+      place-items: center;
+    }
+
+    .reset-video iframe {
+      width: 100%;
+      max-width: 320px;
+      min-height: 476px;
+      border: 0;
+      border-radius: 10px;
     }
 
     .reset-section {
@@ -269,9 +286,22 @@ app.innerHTML = `
       </div>
       <p class="reset-urgency">Hurry, limited copies for this test run</p>
       <div class="reset-media" aria-hidden="true">
+        <div class="reset-video" aria-hidden="false">
+          <iframe
+            src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1422538368929103%2F&show_text=false&width=267&t=0"
+            width="267"
+            height="476"
+            style="border:none;overflow:hidden"
+            scrolling="no"
+            frameborder="0"
+            allowfullscreen="true"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            allowFullScreen="true"
+            title="Full Body Reset video"
+          ></iframe>
+        </div>
         <div class="reset-tile">Cover</div>
         <div class="reset-tile">Results</div>
-        <div class="reset-tile">Story</div>
         <div class="reset-tile">Proof</div>
       </div>
     </header>
