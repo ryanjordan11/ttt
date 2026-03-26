@@ -10,6 +10,7 @@ export default defineConfig({
         step3: resolve(__dirname, 'step3.html'),
         step4: resolve(__dirname, 'step4.html'),
         step5: resolve(__dirname, 'step5.html'),
+        fullReset: resolve(__dirname, 'full-reset.html'),
       },
     },
   },
