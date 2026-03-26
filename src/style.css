@@ -494,6 +494,10 @@ h2 {
   gap: 24px;
 }
 
+.choice-grid-single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .quiz-funnel {
   display: grid;
   align-items: center;
@@ -545,6 +549,10 @@ h2 {
   margin-top: 18px;
 }
 
+.quiz-next-hidden {
+  display: none;
+}
+
 .quiz-options {
   display: grid;
   gap: 12px;
@@ -586,6 +594,12 @@ h2 {
   color: var(--text-strong);
 }
 
+.quiz-cta {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
 .choice-card {
   display: flex;
   flex-direction: column;
@@ -594,6 +608,26 @@ h2 {
 
 .choice-card .button {
   margin-top: 26px;
+}
+
+.calendar-embed {
+  display: grid;
+  place-items: center;
+  min-height: 520px;
+  padding: 0;
+  margin-top: 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(101, 78, 61, 0.18);
+  background: rgba(255, 250, 244, 0.6);
+  text-align: center;
+  color: var(--muted);
+}
+
+.calendar-embed iframe {
+  width: 100%;
+  min-height: 520px;
+  border: 0;
+  border-radius: 14px;
 }
 
 .progress-shell {
@@ -752,5 +786,9 @@ h2 {
 
   .video-placeholder {
     min-height: 220px;
+  }
+
+  .quiz-cta {
+    margin-top: 14px;
   }
 }

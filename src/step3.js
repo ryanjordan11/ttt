@@ -26,7 +26,7 @@ app.innerHTML = `
             <h1 id="step-3-title" class="quiz-question">Question</h1>
             <form class="quiz-form" id="quiz-form">
               <div class="quiz-options" id="quiz-options"></div>
-              <button type="submit" class="button button-primary" id="quiz-next">Next</button>
+              <button type="submit" class="button button-primary quiz-next-hidden" id="quiz-next">Next</button>
             </form>
           </div>
         </div>
@@ -68,7 +68,6 @@ const questions = [
 const quizQuestion = document.querySelector('#step-3-title')
 const quizOptions = document.querySelector('#quiz-options')
 const quizForm = document.querySelector('#quiz-form')
-const quizNext = document.querySelector('#quiz-next')
 const quizPanel = document.querySelector('#quiz-panel')
 const quizProgress = document.querySelector('.quiz-progress-fill')
 const quizStatus = document.querySelector('.quiz-status')
@@ -77,6 +76,30 @@ let currentIndex = 0
 const answers = []
 
 const statusLabels = ['Getting oriented', 'Finding your focus', 'Choosing your direction']
+const typeLabels = ['energy', 'resilience', 'clarity', 'interference']
+
+const resultCopy = {
+  energy: {
+    headline: 'Your body is asking for steadier energy, not more hustle.',
+    body:
+      'Your answers point to energy stability as the fastest win. We will help you reduce the daily load that quietly drains stamina and show simple swaps that support more consistent energy.'
+  },
+  clarity: {
+    headline: 'Your next step is mental clarity, not doing more.',
+    body:
+      'Your responses suggest focus is getting clouded by subtle interference. We will start by identifying the biggest routine disruptors and simplify what to change first.'
+  },
+  resilience: {
+    headline: 'Your rhythm wants balance before intensity.',
+    body:
+      'You are not far off. Your system just needs fewer stressors. We will prioritize small, sustainable changes that help your body feel less overworked.'
+  },
+  interference: {
+    headline: 'You are ready to find what is quietly throwing things off.',
+    body:
+      'Your answers show strong awareness that routine factors matter. We will pinpoint the top categories most likely affecting you and guide the first replacements.'
+  }
+}
 
 const renderQuestion = () => {
   const question = questions[currentIndex]
@@ -92,46 +115,67 @@ const renderQuestion = () => {
     )
     .join('')
 
-  quizNext.textContent = currentIndex === questions.length - 1 ? 'See my next step' : 'Next'
   quizProgress.style.width = `${((currentIndex + 1) / questions.length) * 100}%`
   quizStatus.textContent = statusLabels[currentIndex] || 'Progress'
   quizPanel.classList.remove('step-active')
   window.requestAnimationFrame(() => quizPanel.classList.add('step-active'))
 }
 
+const scoreResults = () => {
+  const scores = {
+    energy: 0,
+    resilience: 0,
+    clarity: 0,
+    interference: 0
+  }
+
+  answers.forEach((answer, index) => {
+    const type = typeLabels[answer]
+    if (!type) return
+    scores[type] += 1
+    if (index === 2) {
+      scores[type] += 0.5
+    }
+  })
+
+  const highest = Object.entries(scores).sort((a, b) => b[1] - a[1])
+  const topScore = highest[0][1]
+  const topTypes = highest.filter(([, score]) => score === topScore).map(([type]) => type)
+  if (topTypes.length === 1) return topTypes[0]
+
+  const q3Type = typeLabels[answers[2]]
+  return topTypes.includes(q3Type) ? q3Type : topTypes[0]
+}
+
 const renderCompletion = () => {
-  quizQuestion.textContent = 'You are all set.'
+  const resultType = scoreResults()
+  const copy = resultCopy[resultType]
+  quizQuestion.textContent = copy.headline
   quizOptions.innerHTML = `
     <div class="quiz-complete">
-      <p>Your responses point to a clean, focused next step. We will guide you there now.</p>
+      <p>${copy.body}</p>
+    </div>
+    <div class="quiz-cta">
+      <a class="button button-primary" href="/step4.html">Watch Your Next Step</a>
+      <p class="microcopy">This 2-minute message explains what to focus on first.</p>
     </div>
   `
-  quizNext.textContent = 'Continue to the message'
   quizProgress.style.width = '100%'
   quizStatus.textContent = 'Ready for the next step'
 }
 
-quizForm.addEventListener('submit', (event) => {
-  event.preventDefault()
-  const selected = quizForm.querySelector('input[name="quiz-option"]:checked')
+quizOptions.addEventListener('change', (event) => {
+  const selected = event.target.closest('input[name="quiz-option"]')
   if (!selected) return
 
   answers[currentIndex] = Number(selected.value)
   if (currentIndex < questions.length - 1) {
     currentIndex += 1
-    renderQuestion()
+    window.setTimeout(renderQuestion, 220)
     return
   }
 
   renderCompletion()
-  quizNext.type = 'button'
-  quizNext.addEventListener(
-    'click',
-    () => {
-      window.location.href = '/step4.html'
-    },
-    { once: true }
-  )
 })
 
 renderQuestion()

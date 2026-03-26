@@ -15,37 +15,30 @@ app.innerHTML = `
     <main class="funnel" aria-labelledby="step-5-title">
       <section class="step step-single">
         <div class="step-copy">
-          <p class="eyebrow">Next steps</p>
-          <h1 id="step-5-title">Choose the next step that matches where you are right now.</h1>
+          <p class="eyebrow">Final step</p>
+          <h1 id="step-5-title">You made it here. Now let’s get connected.</h1>
           <p class="lead">
-            Some people want direct guidance. Others want to start replacing products
-            immediately. Both options should feel simple, warm, and easy to trust.
+            Book a short call so we can clarify your best next step and keep your progress simple.
           </p>
+          <div class="guide-details">
+            <p>This is a focused 1:1 call to pinpoint what is sabotaging your health at home.</p>
+            <p>Identify hidden toxins in daily products and why energy, digestion, or skin may not be improving.</p>
+            <p>Walk away with a simple, realistic swap plan.</p>
+          </div>
+          <p class="microcopy">Book your free call and take the first step.</p>
         </div>
 
-        <div class="choice-grid">
+        <div class="choice-grid choice-grid-single">
           <article class="card choice-card">
-            <p class="card-kicker">Option 1</p>
-            <h2>Need personal guidance?</h2>
-            <p class="card-text">
-              Book a short conversation for tailored direction on what to change first, what to
-              ignore for now, and how to make progress without overwhelm.
-            </p>
-            <a class="button button-secondary" href="#booking-placeholder">Book a 15-minute call</a>
-            <p class="microcopy">Booking integration will be connected once the final link is ready.</p>
-          </article>
-
-          <article class="card choice-card">
-            <p class="card-kicker">Option 2</p>
-            <h2>Ready to browse products?</h2>
-            <p class="card-text">
-              Explore a curated collection of cleaner, organic alternatives selected to help you
-              make practical swaps with more confidence.
-            </p>
-            <a class="button button-primary" href="https://www.essanteorganics.com/LiveAlkalineAF" target="_blank" rel="noreferrer">
-              Explore recommended products
-            </a>
-            <p class="microcopy">This can be updated later if the client wants a different storefront or tracking.</p>
+            <p class="card-kicker">Schedule</p>
+            <h2>Book your free call.</h2>
+            <div class="calendar-embed">
+              <iframe
+                title="Schedule a free call"
+                src="https://tidycal.com/timoteo/free-call-eliminate-the-hidden-toxins-wrecking-your-health"
+                loading="lazy"
+              ></iframe>
+            </div>
           </article>
         </div>
       </section>

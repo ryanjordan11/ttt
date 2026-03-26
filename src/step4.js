@@ -16,10 +16,9 @@ app.innerHTML = `
       <section class="step step-single">
         <div class="step-copy">
           <p class="eyebrow">Welcome message</p>
-          <h1 id="step-4-title">Your guide is on its way, and there is one principle to keep in mind.</h1>
+          <h1 id="step-4-title">Your next step is simple. It starts here.</h1>
           <p class="lead">
-            A healthier home is not built through perfection. It is built through steady,
-            better decisions that fit naturally into everyday life.
+            This short message explains what to focus on first so you feel progress without overwhelm.
           </p>
           <div class="quote-block">
             <p>Start with one product. Replace it well. Then keep going with confidence.</p>
