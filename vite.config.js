@@ -8,6 +8,8 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         step2: resolve(__dirname, 'step2.html'),
         step3: resolve(__dirname, 'step3.html'),
+        step4: resolve(__dirname, 'step4.html'),
+        step5: resolve(__dirname, 'step5.html'),
       },
     },
   },
