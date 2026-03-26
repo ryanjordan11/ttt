@@ -498,6 +498,48 @@ h2 {
   grid-template-columns: minmax(0, 1fr);
 }
 
+.longform-funnel {
+  min-height: auto;
+}
+
+.longform-step {
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+}
+
+.longform-copy {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.longform-title {
+  max-width: none;
+  font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+}
+
+.longform-subtitle {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.longform-divider {
+  margin: 22px 0;
+  text-align: center;
+  color: var(--gold-deep);
+  letter-spacing: 0.5em;
+}
+
+.longform-copy p {
+  margin: 0 0 16px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.longform-copy p:last-of-type {
+  margin-bottom: 0;
+}
+
 .quiz-funnel {
   display: grid;
   align-items: center;

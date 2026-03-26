@@ -46,6 +46,7 @@ app.innerHTML = `
             />
             <button type="submit" class="button button-primary">Get The Free Guide</button>
           </form>
+          <a class="button button-secondary" href="/full-reset.html">View The Full Body Reset Page</a>
           <p class="microcopy">
             👉 Takes less than 2 minutes to go through.
           </p>
