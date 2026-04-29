@@ -1,6 +1,7 @@
 import "./guide.css"
 
 const navItems = [
+  { href: "/guide-welcome.html", label: "Welcome" },
   { href: "/guide-day1.html", label: "Day 1" },
   { href: "/guide-day2.html", label: "Day 2" },
   { href: "/guide-day3.html", label: "Day 3" },
@@ -8,7 +9,7 @@ const navItems = [
   { href: "/guide-day5.html", label: "Day 5" }
 ]
 
-export function renderGuidePage({ day, title, intro, contentHtml }) {
+export function renderGuidePage({ day, title, intro, contentHtml, videoSrc = "", videoTitle = "" }) {
   const app = document.querySelector("#app")
   app.innerHTML = `
     <div class="guide-shell">
@@ -31,6 +32,19 @@ export function renderGuidePage({ day, title, intro, contentHtml }) {
           <section class="section-card">
             <p class="eyebrow">${day}</p>
             <h1>${title}</h1>
+            ${
+              videoSrc
+                ? `
+              <div class="welcome-video">
+                <video controls preload="metadata" playsinline>
+                  <source src="${videoSrc}" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                ${videoTitle ? `<p class="video-caption">${videoTitle}</p>` : ""}
+              </div>
+            `
+                : ""
+            }
             <p class="lead">${intro}</p>
           </section>
           <section class="section-card copy-block">${contentHtml}</section>

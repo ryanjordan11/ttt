@@ -7,6 +7,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         guide: resolve(__dirname, 'guide.html'),
+        guideWelcome: resolve(__dirname, 'guide-welcome.html'),
         guideDay1: resolve(__dirname, 'guide-day1.html'),
         guideDay2: resolve(__dirname, 'guide-day2.html'),
         guideDay3: resolve(__dirname, 'guide-day3.html'),
